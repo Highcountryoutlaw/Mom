@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hot Shot Vape and Smoke</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #1c1c1c, #2e2e2e);
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      padding: 2em;
+      background: #e53935;
+      font-size: 2em;
+      font-weight: bold;
+      color: #fff8e1;
+    }
+
+    .tagline {
+      font-size: 1.2em;
+      margin-top: 0.3em;
+      color: #ffd1dc;
+    }
+
+    .photo-container {
+      margin: 2em auto;
+    }
+
+    .photo-container img {
+      max-width: 90%;
+      max-height: 500px;
+      border-radius: 1em;
+      box-shadow: 0 0 20px rgba(255, 105, 135, 0.5);
+    }
+
+    #walletStatus {
+      margin: 1em;
+      font-size: 1em;
+      color: #81c784;
+    }
+
+    .btn {
+      padding: 1em 2em;
+      background-color: #43a047;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      margin: 1em;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #66bb6a;
+    }
+
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #ccc;
+      padding-bottom: 2em;
+    }
+
+    .emoji-tagline {
+      font-size: 1.1em;
+      color: #fce4ec;
+      margin-top: 1em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    HOT SHOT VAPE & SMOKE
+    <div class="tagline">Utah County • Robyn Zufelt’s Bold New Vision</div>
+    <div class="emoji-tagline">World’s First Web3 Smoke Shop 🤫🫠</div>
+  </header>
+
+  <div class="photo-container">
+    <img src="0C62209F-B341-4509-9D68-100171D5CECD.jpeg" alt="Robyn Zufelt and team">
+  </div>
+
+  <div id="walletStatus">Connect your wallet to begin 🔌</div>
+
+  <button class="btn" onclick="connectWallet()">Connect Wallet</button>
+  <button class="btn" onclick="mintNFT()">Mint Exclusive Smoke NFT</button>
+
+  <footer>
+    Built with heart by your son ❤️ — Robyn, your fire lights up this shop.<br>
+    You’re the future of small biz, powered by Web3.
+  </footer>
+
+  <script>
+    let web3;
+
+    async function connectWallet() {
+      if (window.ethereum) {
+        web3 = new Web3(window.ethereum);
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          document.getElementById('walletStatus').innerText = "Connected: " + accounts[0];
+        } catch (error) {
+          document.getElementById('walletStatus').innerText = "Connection denied.";
+        }
+      } else {
+        document.getElementById('walletStatus').innerText = "Please install MetaMask!";
+      }
+    }
+
+    async function mintNFT() {
+      if (!web3) {
+        alert("Please connect your wallet first.");
+        return;
+      }
+      // Placeholder — Replace with contract logic
+      alert("Minting smoke NFT... (you’ll plug your smart contract in here)");
+    }
+  </script>
+
+</body>
+</html>
